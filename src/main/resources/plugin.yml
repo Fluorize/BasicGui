@@ -1,0 +1,4 @@
+name: BasicGui
+version: '${project.version}'
+main: com.gmail.fluorize009.basicgui.BasicGui
+api-version: 1.19
