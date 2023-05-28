@@ -4,12 +4,10 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public interface Scrollable{
-    ItemStack getEmptyIcon();
+public interface Scrollable extends ContentHolder{
     void scrollTo(int index);
     void goNext();
     void goBack();
-    List<SingleSlotContent> getContents();
-    void setContent(SingleSlotContent content);
 
+    int getScroll();
 }

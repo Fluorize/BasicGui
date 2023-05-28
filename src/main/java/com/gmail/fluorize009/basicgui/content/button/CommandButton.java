@@ -1,10 +1,15 @@
 package com.gmail.fluorize009.basicgui.content.button;
 
-import com.gmail.fluorize009.basicgui.content.Performable;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
-public class CommandButton extends GuiButton implements Performable {
-    private String command;
+public class CommandButton extends GuiButton{
+    private final String command;
+
+    public CommandButton(ItemStack icon,String command) {
+        super(icon);
+        this.command = command;
+    }
 
     @Override
     public boolean perform(Player performer) {
