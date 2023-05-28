@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
  * アイテムです
  * ボタンだったり、フレームだったり...
  */
-public abstract class SingleVisibleItem implements GuiContent, GuiItem {
+public abstract class SingleVisibleItem implements GuiItem {
 
     private final ItemStack icon;
 

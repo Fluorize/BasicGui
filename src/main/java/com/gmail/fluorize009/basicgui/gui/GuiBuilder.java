@@ -44,7 +44,7 @@ public class GuiBuilder {
 
     public Gui getGui(){
         Inventory inv = Bukkit.createInventory(null,size);
-        return new ConcreteGui(inv);
+        return new ConcreteGui(inv,contents);
     }
 
 }
