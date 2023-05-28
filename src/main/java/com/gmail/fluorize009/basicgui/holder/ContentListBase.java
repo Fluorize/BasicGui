@@ -1,22 +1,25 @@
-package com.gmail.fluorize009.basicgui.content.scrollable;
+package com.gmail.fluorize009.basicgui.holder;
 
-import com.gmail.fluorize009.basicgui.content.Scrollable;
+import com.gmail.fluorize009.basicgui.content.ItemProxy;
 import com.gmail.fluorize009.basicgui.content.SingleVisibleItem;
-import org.bukkit.inventory.ItemStack;
+import com.gmail.fluorize009.basicgui.content.GuiItem;
 
 import java.util.List;
 
-public abstract class ScrollableBase implements Scrollable {
+public class ContentListBase implements ContentList {
 
     private int scroll = 0;
     private final List<SingleVisibleItem> items;
 
-    public ScrollableBase(List<SingleVisibleItem> items) {
+    private final List<ItemProxy> proxies;
+
+    public ContentListBase(List<SingleVisibleItem> items, List<ItemProxy> proxies) {
         this.items = items;
+        this.proxies = proxies;
     }
 
     @Override
-    public ItemStack getEmptyIcon() {
+    public GuiItem getEmptyContent() {
         return null;
     }
 
@@ -50,5 +53,8 @@ public abstract class ScrollableBase implements Scrollable {
         return items.get(slot-scroll);
     }
 
-
+    @Override
+    public List<ItemProxy> getProxies() {
+        return proxies;
+    }
 }

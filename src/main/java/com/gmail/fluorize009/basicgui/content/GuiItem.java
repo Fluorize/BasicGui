@@ -2,7 +2,7 @@ package com.gmail.fluorize009.basicgui.content;
 
 import org.bukkit.inventory.ItemStack;
 
-public interface Visible{
+public interface GuiItem {
     /**
      * The item which will be shown the player on GUI
      * @return item on the GUI

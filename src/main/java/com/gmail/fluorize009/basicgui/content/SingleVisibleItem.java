@@ -3,10 +3,10 @@ package com.gmail.fluorize009.basicgui.content;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * ひとつのスロットに存在する、見えるアイテムです
+ * アイテムです
  * ボタンだったり、フレームだったり...
  */
-public class SingleVisibleItem implements Visible,SingleSlotContent{
+public abstract class SingleVisibleItem implements GuiContent, GuiItem {
 
     private final ItemStack icon;
 
