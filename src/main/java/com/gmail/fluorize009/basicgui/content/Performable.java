@@ -2,7 +2,7 @@ package com.gmail.fluorize009.basicgui.content;
 
 import org.bukkit.entity.Player;
 
-public interface Performable extends GuiItem{
+public interface Performable{
     /**
      * Run some task registered.
      * Called when the content is clicked.
