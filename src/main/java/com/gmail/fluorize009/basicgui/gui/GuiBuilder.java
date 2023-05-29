@@ -14,6 +14,8 @@ public class GuiBuilder {
     private final int size;
     private final List<GuiContent> contents;
 
+    private Component title = Component.text("GUI");
+
     public GuiBuilder(int guiSize){
         if(guiSize % 9 != 0){
             throw new IllegalArgumentException("GUI size must be multiple of 9 ");
@@ -33,17 +35,21 @@ public class GuiBuilder {
         Collections.fill(contents, content);
     }
 
-    public void fillContent(GuiContent content,int x,int y,int xSize,int ySize){
-
+    public void fillContent(GuiContent content,int x,int y,int xSize,int ySize) {
+        for (int iy = 0; iy < ySize; iy++) {
+            for (int ix = 0; ix < xSize; ix++) {
+                contents.set((y + iy) * 9 + (x + ix), content);
+            }
+        }
     }
 
     public void setTitle(Component title){
-
+        this.title = title;
     }
 
 
     public Gui getGui(){
-        Inventory inv = Bukkit.createInventory(null,size);
+        Inventory inv = Bukkit.createInventory(null,size,title);
         return new ConcreteGui(inv,contents);
     }
 

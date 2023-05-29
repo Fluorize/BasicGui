@@ -9,10 +9,13 @@ import java.util.List;
 public interface ContentHolder {
     GuiItem getEmptyContent();
 
-    List<SingleVisibleItem> getContents();
+    List<? extends GuiItem> getContents();
 
-    SingleVisibleItem getContentAtSlot(int index);
+    ItemProxy getProxyAt(int index);
 
-    List<ItemProxy> getProxies();
+    List<? extends ItemProxy> getProxies();
 
+    GuiItem getContentAt(int slot);
+
+    void update();
 }
