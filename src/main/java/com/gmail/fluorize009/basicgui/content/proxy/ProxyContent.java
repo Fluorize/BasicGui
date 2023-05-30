@@ -1,4 +1,6 @@
-package com.gmail.fluorize009.basicgui.content;
+package com.gmail.fluorize009.basicgui.content.proxy;
+
+import com.gmail.fluorize009.basicgui.content.GuiContent;
 
 public class ProxyContent implements ItemProxy {
 

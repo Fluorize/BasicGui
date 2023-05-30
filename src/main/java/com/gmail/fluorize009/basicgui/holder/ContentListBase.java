@@ -1,7 +1,7 @@
 package com.gmail.fluorize009.basicgui.holder;
 
 import com.gmail.fluorize009.basicgui.content.GuiContent;
-import com.gmail.fluorize009.basicgui.content.ItemProxy;
+import com.gmail.fluorize009.basicgui.content.proxy.ItemProxy;
 import com.gmail.fluorize009.basicgui.content.GuiItem;
 
 import java.util.List;
@@ -9,11 +9,11 @@ import java.util.List;
 public class ContentListBase implements ContentList {
 
     private int scroll = 0;
-    private final List<? extends GuiItem> items;
+    private final List<? extends GuiContent> items;
 
     private final List<? extends ItemProxy> proxies;
 
-    public ContentListBase(List<? extends GuiItem> items, List<? extends ItemProxy> proxies) {
+    public ContentListBase(List<? extends GuiContent> items, List<? extends ItemProxy> proxies) {
         this.items = items;
         this.proxies = proxies;
         update();
@@ -25,7 +25,7 @@ public class ContentListBase implements ContentList {
     }
 
     @Override
-    public List<? extends GuiItem> getContents() {
+    public List<? extends GuiContent> getContents() {
         return items;
     }
 

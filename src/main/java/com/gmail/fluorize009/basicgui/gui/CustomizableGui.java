@@ -1,7 +1,7 @@
 package com.gmail.fluorize009.basicgui.gui;
 
 import com.gmail.fluorize009.basicgui.content.GuiItem;
-import com.gmail.fluorize009.basicgui.content.ItemProxy;
+import com.gmail.fluorize009.basicgui.content.proxy.ItemProxy;
 import com.gmail.fluorize009.basicgui.content.GuiContent;
 import com.gmail.fluorize009.basicgui.content.Performable;
 import org.bukkit.entity.Player;
@@ -35,17 +35,16 @@ public class CustomizableGui implements Gui{
 
     @Override
     public void click(InventoryClickEvent event) {
+        event.setCancelled(true);
         GuiContent c = ItemProxy.getBodyOf(contents.get(event.getSlot()));
         if (c instanceof Performable) {
             Performable pf = (Performable) c;
-            pf.perform((Player) event.getWhoClicked());
-            if (pf.isCloseTrigger()) {
+            if (pf.perform((Player) event.getWhoClicked()) && pf.isCloseTrigger()) {
                 //close
                 event.getWhoClicked().closeInventory(InventoryCloseEvent.Reason.PLUGIN);
             }
         }
         update();
-        event.setCancelled(true);
     }
 
 
@@ -76,4 +75,5 @@ public class CustomizableGui implements Gui{
             }
         }
     }
+
 }

@@ -1,7 +1,7 @@
 package com.gmail.fluorize009.basicgui.holder;
 
 import com.gmail.fluorize009.basicgui.content.GuiContent;
-import com.gmail.fluorize009.basicgui.content.ItemProxy;
+import com.gmail.fluorize009.basicgui.content.proxy.ItemProxy;
 import com.gmail.fluorize009.basicgui.content.GuiItem;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public interface ContentHolder {
     GuiItem getEmptyContent();
 
-    List<? extends GuiItem> getContents();
+    List<? extends GuiContent> getContents();
 
     ItemProxy getProxyAt(int index);
 

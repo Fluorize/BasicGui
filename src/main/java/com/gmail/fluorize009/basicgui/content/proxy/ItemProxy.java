@@ -1,6 +1,8 @@
-package com.gmail.fluorize009.basicgui.content;
+package com.gmail.fluorize009.basicgui.content.proxy;
 
-public interface ItemProxy extends GuiContent{
+import com.gmail.fluorize009.basicgui.content.GuiContent;
+
+public interface ItemProxy extends GuiContent {
 
     static GuiContent getBodyOf(GuiContent content){
         GuiContent c = content;
