@@ -1,5 +1,6 @@
 package com.gmail.fluorize009.basicgui.holder;
 
+import com.gmail.fluorize009.basicgui.content.GuiContent;
 import com.gmail.fluorize009.basicgui.content.ItemProxy;
 import com.gmail.fluorize009.basicgui.content.GuiItem;
 
@@ -14,7 +15,7 @@ public interface ContentHolder {
 
     List<? extends ItemProxy> getProxies();
 
-    GuiItem getContentAt(int slot);
+    GuiContent getContentAt(int slot);
 
     void update();
 }

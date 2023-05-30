@@ -1,5 +1,6 @@
 package com.gmail.fluorize009.basicgui.holder;
 
+import com.gmail.fluorize009.basicgui.content.GuiContent;
 import com.gmail.fluorize009.basicgui.content.ItemProxy;
 import com.gmail.fluorize009.basicgui.content.GuiItem;
 
@@ -15,6 +16,7 @@ public class ContentListBase implements ContentList {
     public ContentListBase(List<? extends GuiItem> items, List<? extends ItemProxy> proxies) {
         this.items = items;
         this.proxies = proxies;
+        update();
     }
 
     @Override
@@ -28,21 +30,35 @@ public class ContentListBase implements ContentList {
     }
 
     @Override
-    public void scrollTo(int index) {
+    public int scrollTo(int index) {
         scroll = index;
+        if(scroll >= items.size() - proxies.size()){
+            scroll = items.size() - proxies.size();
+        } else if(scroll <= 0){
+            scroll = 0;
+        }
         update();
+        return scroll;
     }
 
     @Override
-    public void goNext() {
+    public boolean goNext() {
+        if(scroll >= items.size() - proxies.size()){
+            return false;
+        }
         scroll++;
         update();
+        return true;
     }
 
     @Override
-    public void goBack() {
+    public boolean goBack() {
+        if(scroll <= 0){
+            return false;
+        }
         scroll--;
         update();
+        return true;
     }
 
     @Override
@@ -56,8 +72,8 @@ public class ContentListBase implements ContentList {
     }
 
     @Override
-    public GuiItem getContentAt(int slot) {
-        return proxies.get(slot).getContent();
+    public GuiContent getContentAt(int slot) {
+        return ItemProxy.getBodyOf(proxies.get(slot));
     }
 
     @Override

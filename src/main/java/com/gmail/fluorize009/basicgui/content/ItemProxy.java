@@ -2,8 +2,16 @@ package com.gmail.fluorize009.basicgui.content;
 
 public interface ItemProxy extends GuiContent{
 
-    void setContent(GuiItem content);
+    static GuiContent getBodyOf(GuiContent content){
+        GuiContent c = content;
+        while(c instanceof ItemProxy){
+            c = ((ItemProxy) c).getContent();
+        }
+        return c;
+    }
 
-    GuiItem getContent();
+    void setContent(GuiContent content);
+
+    GuiContent getContent();
 
 }

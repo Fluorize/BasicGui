@@ -6,6 +6,7 @@ import com.gmail.fluorize009.basicgui.content.GuiContent;
 import com.gmail.fluorize009.basicgui.content.Performable;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class CustomizableGui implements Gui{
     public CustomizableGui(Inventory inventory, List<GuiContent> contents){
         this.inventory = inventory;
         this.contents = contents;
+        update();
     }
 
     @Override
@@ -33,20 +35,19 @@ public class CustomizableGui implements Gui{
 
     @Override
     public void click(InventoryClickEvent event) {
-        GuiContent c = contents.get(event.getSlot());
-        if(c instanceof ItemProxy){
-            c = ((ItemProxy) c).getContent();
-        }
+        GuiContent c = ItemProxy.getBodyOf(contents.get(event.getSlot()));
         if (c instanceof Performable) {
             Performable pf = (Performable) c;
             pf.perform((Player) event.getWhoClicked());
             if (pf.isCloseTrigger()) {
                 //close
+                event.getWhoClicked().closeInventory(InventoryCloseEvent.Reason.PLUGIN);
             }
         }
         update();
         event.setCancelled(true);
     }
+
 
     @Override
     public void setContentAt(int slot, GuiContent content) {
@@ -67,11 +68,9 @@ public class CustomizableGui implements Gui{
     @Override
     public void update() {
         for(int i=0;i<contents.size();i++) {
-            GuiContent c = contents.get(i);
+            GuiContent c = ItemProxy.getBodyOf(contents.get(i));
             if(c instanceof GuiItem) {
                 inventory.setItem(i, ((GuiItem) c).getIcon());
-            }else if(c instanceof ItemProxy){
-                inventory.setItem(i,((ItemProxy) c).getContent().getIcon());
             }else{
                 inventory.setItem(i,null);
             }
