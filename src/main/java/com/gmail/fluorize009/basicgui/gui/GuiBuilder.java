@@ -28,7 +28,14 @@ public class GuiBuilder {
     }
 
     public void setContent(int slot, GuiContent content){
+        if(slot<0 || size<=slot){
+            throw new IndexOutOfBoundsException();
+        }
         contents.set(slot,content);
+    }
+
+    public void setContent(int x,int y,GuiContent content){
+        setContent(y*9+x,content);
     }
 
     public void fillContent(GuiContent content){
@@ -50,7 +57,7 @@ public class GuiBuilder {
 
     public Gui getGui(){
         Inventory inv = Bukkit.createInventory(null,size,title);
-        return new ConcreteGui(inv,contents);
+        return new CustomizableGui(inv,contents);
     }
 
 }

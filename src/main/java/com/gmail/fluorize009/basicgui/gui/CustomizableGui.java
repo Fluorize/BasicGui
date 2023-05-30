@@ -2,7 +2,6 @@ package com.gmail.fluorize009.basicgui.gui;
 
 import com.gmail.fluorize009.basicgui.content.GuiItem;
 import com.gmail.fluorize009.basicgui.content.ItemProxy;
-import com.gmail.fluorize009.basicgui.holder.ContentHolder;
 import com.gmail.fluorize009.basicgui.content.GuiContent;
 import com.gmail.fluorize009.basicgui.content.Performable;
 import org.bukkit.entity.Player;
@@ -12,24 +11,24 @@ import org.bukkit.inventory.Inventory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConcreteGui implements Gui{
+public class CustomizableGui implements Gui{
 
     List<GuiContent> contents = new ArrayList<>();
     Inventory inventory;
 
 
-    public ConcreteGui(Inventory inventory){
+    public CustomizableGui(Inventory inventory){
         this.inventory = inventory;
     }
 
-    public ConcreteGui(Inventory inventory,List<GuiContent> contents){
+    public CustomizableGui(Inventory inventory, List<GuiContent> contents){
         this.inventory = inventory;
         this.contents = contents;
     }
 
     @Override
     public Inventory getInventory() {
-        return null;
+        return inventory;
     }
 
     @Override
@@ -58,6 +57,11 @@ public class ConcreteGui implements Gui{
     @Override
     public GuiContent getContentAt(int slot) {
         return contents.get(slot);
+    }
+
+    @Override
+    public boolean unregisteredOnClose() {
+        return true;
     }
 
     @Override

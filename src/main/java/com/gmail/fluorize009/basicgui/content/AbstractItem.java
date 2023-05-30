@@ -6,11 +6,11 @@ import org.bukkit.inventory.ItemStack;
  * アイテムです
  * ボタンだったり、フレームだったり...
  */
-public abstract class SingleVisibleItem implements GuiItem {
+public abstract class AbstractItem implements GuiItem {
 
     private final ItemStack icon;
 
-    public SingleVisibleItem(ItemStack icon){
+    public AbstractItem(ItemStack icon){
         this.icon = icon;
     }
 

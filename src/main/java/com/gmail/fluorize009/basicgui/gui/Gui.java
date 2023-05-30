@@ -13,5 +13,7 @@ public interface Gui {
 
     GuiContent getContentAt(int slot);
 
+    boolean unregisteredOnClose();
+
     void update();
 }

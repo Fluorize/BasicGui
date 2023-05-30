@@ -2,23 +2,24 @@ package com.gmail.fluorize009.basicgui.content.button;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Consumer;
 
 import java.util.List;
 
-public class RunnableButton extends GuiButton{
+public class ConsumerButton extends GuiButton{
 
-    List<Runnable> runnable;
+    List<Consumer<Player>> consumers;
 
-    public RunnableButton(ItemStack icon, List<Runnable> runnable) {
+    public ConsumerButton(ItemStack icon, List<Consumer<Player>> consumers) {
         super(icon);
-        this.runnable = runnable;
+        this.consumers = consumers;
     }
 
     @Override
     public boolean perform(Player performer) {
         try {
-            for (Runnable r : runnable) {
-                r.run();
+            for (Consumer<Player> c : consumers) {
+                c.accept(performer);
             }
         }catch (Exception e){
             return false;
