@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gmail.fluorize009</groupId>
-    <artifactId>BasicGui</artifactId>
-    <version>1.0</version>
+    <artifactId>basicgui</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>BasicGui</name>
@@ -38,6 +38,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <finalName>BasicGui-${version}</finalName>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>

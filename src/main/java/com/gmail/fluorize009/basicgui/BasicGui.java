@@ -2,6 +2,7 @@ package com.gmail.fluorize009.basicgui;
 
 import com.gmail.fluorize009.basicgui.content.GuiContent;
 import com.gmail.fluorize009.basicgui.content.GuiItem;
+import com.gmail.fluorize009.basicgui.content.button.CloseButton;
 import com.gmail.fluorize009.basicgui.content.button.WarpButton;
 import com.gmail.fluorize009.basicgui.content.proxy.ProxyContent;
 import com.gmail.fluorize009.basicgui.content.button.ConsumerButton;
@@ -49,13 +50,14 @@ public final class BasicGui extends JavaPlugin {
         GuiItem card4 = new GuiDisplay(IconUtils.createIcon(Material.PAPER,4, Component.text("Scroll 4"),List.of(Component.text("This is the end of the array!")),true));
         GuiContent button2 = new WarpButton(IconUtils.createIcon(Material.ENDER_PEARL,1, Component.text("tp to 0,100,0")), new Location(((Player) sender).getWorld(),0,100,0));
         ContentList list = new ContentListBase(List.of(card1,card2,card3,button2,card4),List.of(pc));
-        ScrollButton button3 = new ScrollButton(IconUtils.createIcon(Material.ARROW,1,Component.text("Next")),list, ScrollButton.ScrollType.NEXT);
-        ScrollButton button4 = new ScrollButton(IconUtils.createIcon(Material.ARROW,1,Component.text("Back")),list, ScrollButton.ScrollType.BACK);
+        GuiContent button3 = new ScrollButton(IconUtils.createIcon(Material.ARROW,1,Component.text("Next")),list, ScrollButton.ScrollType.NEXT);
+        GuiContent button4 = new ScrollButton(IconUtils.createIcon(Material.ARROW,1,Component.text("Back")),list, ScrollButton.ScrollType.BACK);
         builder.setContent(1,3,button3);
         builder.setContent(2,3,pc);
         builder.setContent(3,3,button4);
 
-        builder.setContent(1,5,button2);
+        GuiContent button5 = new CloseButton(IconUtils.createIcon(Material.BARRIER,1,Component.text("Close")));
+        builder.setContent(4,5,button5);
 
         Gui gui = builder.getGui();
         watcher.registerGui(gui);
